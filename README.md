@@ -37,3 +37,12 @@ npm run dev
 npm run build
 ```
 "# Rutas" 
+
+# POKEDEX
+
+<img width="1885" height="877" alt="image" src="https://github.com/user-attachments/assets/0a30c575-88db-42cd-8d16-ff35635bc9e4" />
+
+<img width="1887" height="885" alt="image" src="https://github.com/user-attachments/assets/51f2b899-b16d-44ff-a059-eea2e9a6db0a" />
+
+<img width="1893" height="869" alt="image" src="https://github.com/user-attachments/assets/b805bab9-a4f3-43bc-98a9-5c078b17365f" />
+
