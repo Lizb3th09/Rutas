@@ -23,7 +23,6 @@ const getData = async () => {
       `https://pokeapi.co/api/v2/pokemon/${route.params.name}`
     )
 
-    // 🔥 Espera mínima de 200ms
     await new Promise(resolve => setTimeout(resolve, 200))
 
     pokemon.value = data
@@ -50,153 +49,65 @@ watch(
 <template>
   <LoadingSpinner v-if="loading" />
 
-  <div v-else class="detail">
-    <div class="card">
+  <div
+    v-else
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-300 to-indigo-300 p-5"
+  >
+    <div class="flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full">
 
-      <div class="image-section">
-        <img 
-          :src="pokemon.sprites.other['official-artwork'].front_default" 
+      <!-- Imagen -->
+      <div class="flex-1 bg-indigo-50 flex items-center justify-center p-10">
+        <img
+          :src="pokemon.sprites.other['official-artwork'].front_default"
           :alt="pokemon.name"
+          class="w-64 transition duration-300 hover:scale-110"
         />
       </div>
 
-      <div class="info-section">
-        <h1>{{ pokemon.name }}</h1>
+      <!-- Información -->
+      <div class="flex-1 p-10">
 
-        <div class="stats">
+        <h1 class="text-3xl capitalize mb-5">
+          {{ pokemon.name }}
+        </h1>
+
+        <!-- Stats -->
+        <div class="flex gap-8 mb-6">
           <div>
-            <span class="label">Altura</span>
-            <span class="value">{{ pokemon.height }}</span>
+            <span class="block text-sm text-gray-500">Altura</span>
+            <span class="text-lg font-bold">{{ pokemon.height }}</span>
           </div>
+
           <div>
-            <span class="label">Peso</span>
-            <span class="value">{{ pokemon.weight }}</span>
+            <span class="block text-sm text-gray-500">Peso</span>
+            <span class="text-lg font-bold">{{ pokemon.weight }}</span>
           </div>
         </div>
 
-        <div class="moves">
-          <h3>Ataques</h3>
-          <div class="move-list">
-            <span 
-              v-for="(move, index) in pokemon.moves.slice(0, 10)" 
+        <!-- Moves -->
+        <div class="mb-6">
+          <h3 class="mb-2 font-semibold">Ataques</h3>
+
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="(move, index) in pokemon.moves.slice(0, 10)"
               :key="index"
-              class="move-chip"
+              class="bg-indigo-100 px-3 py-1 rounded-full text-sm capitalize transition duration-300 hover:bg-indigo-500 hover:text-white"
             >
               {{ move.move.name }}
             </span>
           </div>
         </div>
 
-        <button @click="back">Volver</button>
-      </div>
+        <!-- Botón -->
+        <button
+          @click="back"
+          class="px-8 py-2 bg-gray-900 text-white rounded-full transition duration-300 hover:bg-gray-700 hover:scale-105"
+        >
+          Volver
+        </button>
 
+      </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.detail {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-  padding: 20px;
-}
-
-.card {
-  display: flex;
-  background: white;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  max-width: 900px;
-  width: 100%;
-}
-
-.image-section {
-  flex: 1;
-  background: #f4f6ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
-
-.image-section img {
-  width: 250px;
-  transition: 0.3s;
-}
-
-.image-section img:hover {
-  transform: scale(1.1);
-}
-
-.info-section {
-  flex: 1;
-  padding: 40px;
-}
-
-h1 {
-  text-transform: capitalize;
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.stats {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-}
-
-.label {
-  display: block;
-  font-size: 14px;
-  color: #777;
-}
-
-.value {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.moves h3 {
-  margin-bottom: 10px;
-}
-
-.move-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.move-chip {
-  background: #e0e7ff;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  text-transform: capitalize;
-  transition: 0.3s;
-}
-
-.move-chip:hover {
-  background: #6366f1;
-  color: white;
-}
-
-button {
-  padding: 10px 30px;
-  background: #111827;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #374151;
-  transform: scale(1.05);
-}
-</style>

@@ -2,43 +2,18 @@
 </script>
 
 <template>
-  <footer class="footer">
-    <p>
+  <footer class="w-full bg-gray-900 text-white py-4 text-center">
+    
+    <p class="text-sm">
       © 2026 Pokédex App | Datos obtenidos de 
-      <a href="https://pokeapi.co/" target="_blank">
+      <a 
+        href="https://pokeapi.co/" 
+        target="_blank"
+        class="text-yellow-400 font-bold transition duration-300 hover:text-white"
+      >
         PokeAPI
       </a>
     </p>
+
   </footer>
 </template>
-
-<style scoped>
-.footer {
-  background-color: #111;
-  color: white;
-  width: 100%;
- 
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.links {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-link {
-  color: #facc15; /* amarillo tipo Pikachu */
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.footer-link:hover {
-  color: white;
-}
-</style>

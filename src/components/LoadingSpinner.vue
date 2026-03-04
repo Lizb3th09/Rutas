@@ -13,12 +13,12 @@
 
 <style scoped>
 .loading-wrapper {
-  position: fixed;       /* 🔥 Cubre toda la pantalla */
-  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  position: fixed;       
+  inset: 0;              
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;     /* puedes quitarlo si no quieres fondo */
+  background: white;     
   z-index: 999;
 }
 
@@ -31,7 +31,7 @@
 
 .pokeball {
   width: 100px;
-  animation: spin 1s linear infinite;
+  animation: spin 0.3s linear infinite;
 }
 
 @keyframes spin {
